@@ -7,8 +7,9 @@ keywords: 技能树, 思维导图, mindmap, 脑图
 ---
 
 ```mindmap
-# 技能树
-## Java 后端开发
-## Android 开发
-## Windows 开发
+# 技能樹
+## C# 後端開發
+## Android 開發
+## Windows 開發
+## API 開發
 ```

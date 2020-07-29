@@ -5,9 +5,9 @@ baseurl:
 url: https://bensoncho.github.io
 date_format: "ordinal"
 title: Benson's Blog
-subtitle: "小小工程屍"
-description: "我的個人部落格"
-keywords: Benson, 工程屍
+subtitle: "後端工程師的小抄..."
+description: "Benson 的個人部落格"
+keywords: Benson, 工程屍, 程式心得, 小抄
 timezone: Asia/Taipei
 encoding: "utf-8"
 side_bar_repo_limit: 5
@@ -21,18 +21,18 @@ components:
     # 分享
     share:
         enabled: false
-    # 不蒜子访问统计
+    # 不算子訪問統計
     busuanzi:
         enabled: true
-        start_date: 2020-05-03
+        start_date: 2020-07-29
 # 压缩页面内容
 compress_html:
   clippings: all
   comments: ["<!--", "-->"]
-# 文章字数统计
+# 文章字數統計
 word_count:
     enabled: true
-# 代码高亮风格，支持的 theme 列表见 https://github.com/mzlogin/rouge-themes
+# 代碼高亮風格，支持的 theme 列表见 https://github.com/mzlogin/rouge-themes
 highlight_theme: github
 
 # ---------------- #
@@ -147,7 +147,7 @@ simple_jekyll_search:
 #      Google      #
 # ---------------- #
 google:
-    analytics_id: UA-80669434-1
+    analytics_id: UA-98107317-2
     adsense:
         footer: true
         sidebar: true 
