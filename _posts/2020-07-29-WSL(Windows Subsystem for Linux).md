@@ -18,12 +18,15 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 
 之後會詢問是否要重新開啟，輸入 Y 後重新開機
 
-接著就可以到 Microsoft Store 安裝自己習慣使用的 Linux 版本
+安裝 Linux Distro
+安裝好 WSL 後，你只是安裝好了這個框架，仍然需要安裝一個可以用的 Linux 發行版（Linux Distribution，簡稱 Linux Distro)  
+通常會建議直接安裝 Ubuntu LTS。  
+接著可以到 Microsoft Store 安裝自己習慣使用的 Linux 版本
 
 [https://aka.ms/wslstore](https://aka.ms/wslstore)
 
-- [Ubuntu 16.04 LTS](https://www.microsoft.com/store/apps/9pjn388hp8c9)
 - [Ubuntu 18.04 LTS](https://www.microsoft.com/store/apps/9N9TNGVNDL3Q)
+- [Ubuntu 16.04 LTS](https://www.microsoft.com/store/apps/9pjn388hp8c9)
 - [OpenSUSE Leap 15](https://www.microsoft.com/store/apps/9n1tb6fpvj8c)
 - [OpenSUSE Leap 42](https://www.microsoft.com/store/apps/9njvjts82tjx)
 - [SUSE Linux Enterprise Server 12](https://www.microsoft.com/store/apps/9p32mwbh6cns)
