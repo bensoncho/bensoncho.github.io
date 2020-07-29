@@ -37,12 +37,14 @@ keywords: Telegram, Bot, Chat
 完成後會得到一個token如下圖:
 
 ![start](/images/posts/Telegram/Telegram_token.png)
+
 接下來就可使用username或是 在瀏覽器輸入 https://t.me/{你的username}
 找到你的Telegram Bot了!
 
 ### 設定Webhook接收訊息
-首先, 我們與 Telegram Bot API 的溝通方式為送出 Http Request 到以下位置 https://api.telegram.org/bot<token>/METHOD_NAME
-<token> 是上一步取到的值， METHOD_NAME 則看使用的方法來調整
+
+首先, 我們與 Telegram Bot API 的溝通方式為送出 Http Request 到以下位置 https://api.telegram.org/bot{token}/METHOD_NAME
+{token} 是上一步取到的值， METHOD_NAME 則看使用的方法來調整
 參考官方文件: <a href="https://core.telegram.org/bots/api" target=_blank>https://core.telegram.org/bots/api</a>
 
 獲取訊息的方法有2種:
@@ -52,18 +54,18 @@ keywords: Telegram, Bot, Chat
 2. setWebhook
 與 getUpdates 相反，需另外建立webapi較為麻煩，但可以獲得立即的訊息通知，不需要一直發Request去詢問, 另外根據官方的說明需要注意的是setWebhook後，將無法再使用getUpdates取得訊息!
 
-我們以 setWebhook 的方式實作，因此我們發一個 Request 到以下位置 ( 注意 Method_Name 改為 setWebhook，<token> 則使用步驟一取到的 token 取代
-https://api.telegram.org/bot<token>/setWebhook?url=<你的webapi url>
+我們以 setWebhook 的方式實作，因此我們發一個 Request 到以下位置 ( 注意 Method_Name 改為 setWebhook，{token} 則使用步驟一取到的 token 取代
+https://api.telegram.org/bot{token}/setWebhook?url=<你的webapi url>
 
 至於你的web api要怎麼確定request來自Telegram呢??
-Telegram官方是建議路徑內包含token，例如: https://www.example.com/<token>
+Telegram官方是建議路徑內包含token，例如: https://www.example.com/{token}
 由於沒人其它人你bot的token所以可以借此確定request是來自於Telegram…
 這樣的驗證方式是還滿特別的啦…..
 
 我們以curl丟出setWebhook的Request範例如下:
 
 ```bash
-    curl - location - request POST 'https://api.telegram.org/bot<token>/setWebhook?url=https://jbot.joybomb.com.tw/Telegram/<你的webapi url>'
+    curl - location - request POST 'https://api.telegram.org/bot{token}/setWebhook?url=https://jbot.joybomb.com.tw/Telegram/<你的webapi url>'
 ```
 
 成功的話，我們會收到這樣的Response，代表已經成功設定webhook了
@@ -110,7 +112,7 @@ text: 要發送的訊息 ( 1–4096字元 )
 使用curl範例如下:
 
 ```bash
-curl --location --request POST 'https://api.telegram.org/bot<token>/sendMessage?chat_id={要發送的chat_id}&text={訊息} \
+curl --location --request POST 'https://api.telegram.org/bot{token}/sendMessage?chat_id={要發送的chat_id}&text={訊息} \
 --header 'Content-Type: application/x-www-form-urlencoded'
 ```
 成功發送的話應該會收到以下的Response:
