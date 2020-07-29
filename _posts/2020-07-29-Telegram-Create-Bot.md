@@ -152,7 +152,7 @@ curl --location --request POST 'https://api.telegram.org/bot{token}/sendMessage?
 
 ## 資源
 
-Telegram API ： <a href="https://core.telegram.org/" target="_blank">https://core.telegram.org/</a></br>
-Telegram Bot Platform : <a href="https://telegram.org/blog/bot-revolution">https://telegram.org/blog/bot-revolution</a></br>
-Bots : An introduction for developers : <a href="https://core.telegram.org/bots">https://core.telegram.org/bots</a></br>
-FAQ : <a href="https://core.telegram.org/bots/faq">https://core.telegram.org/bots/faq</a></br>
+Telegram API ： <a href="https://core.telegram.org/" target="_blank">https://core.telegram.org/</a>  
+Telegram Bot Platform : <a href="https://telegram.org/blog/bot-revolution">https://telegram.org/blog/bot-revolution</a>  
+Bots : An introduction for developers : <a href="https://core.telegram.org/bots">https://core.telegram.org/bots</a>  
+FAQ : <a href="https://core.telegram.org/bots/faq">https://core.telegram.org/bots/faq</a>
