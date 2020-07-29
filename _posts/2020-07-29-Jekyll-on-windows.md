@@ -1,16 +1,17 @@
 ---
 layout: post
-title: 使用 Bash 在 Windows 上安裝 Jekyll
+title: 在 Windows 上安裝 Jekyll
 categories: [Windows, Jekyll]
 description: 在 Windows 上安裝 Jekyll ( 必需啟用 Windows Subsystem for Linux )
 keywords: Jekyll, Github, pages, gitpage, 網站產生器, 部落格
 ---
 
-# 在 Windows 系統上安裝 jekyll
+# 使用 Windows Subsystem for Linux 在 Windows 系統上安裝 jekyll
 
-# 先決條件
+# 首先
 
-You must have Windows Subsystem for Linux enabled.
+必需啟用 Windows Subsystem for Linux
+廢話請自動省略..XD 
 
 # 開啟 CMD 並進入 bash
 
