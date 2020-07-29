@@ -70,21 +70,12 @@ Handler 主要有两个用途：
 
 下面是实现一个 Looper 线程的典型例子，在 prepare() 和 loop() 之间初始化 Handler 实例，用于与 Looper 通信：
 
-```java
-class LooperThread extends Thread {
-    public Handler mHandler;
-
-    public void run() {
-        Looper.prepare();
-
-        mHandler = new Handler() {
-            public void handleMessage(Message msg) {
-                // 在这里处理传入的消息
-            }
-        };
-
-        Looper.loop();
-    }
+```json
+{
+    "id": "123123123",
+    "first_name": "aa",
+    "last_name": "bb",
+    "name": "aabb"
 }
 ```
 

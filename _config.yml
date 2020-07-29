@@ -2,16 +2,16 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://mazhuang.org
+url: https://bensoncho.github.io
 date_format: "ordinal"
-title: 码志
-subtitle: "公众号：闷骚的程序员"
-description: "马壮的个人博客，公众号：闷骚的程序员"
-keywords: 码志, Zhuang Ma, mzlogin, mazhuang, 闷骚的程序员
-timezone: Asia/Shanghai
+title: Benson's Blog
+subtitle: "小小工程屍"
+description: "我的個人部落格"
+keywords: Benson, 工程屍
+timezone: Asia/Taipei
 encoding: "utf-8"
 side_bar_repo_limit: 5
-repository: mzlogin/mzlogin.github.io
+repository: bensoncho/bensoncho.github.io
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
     jsdelivr:
@@ -38,12 +38,12 @@ highlight_theme: github
 # ---------------- #
 #      Author      #
 # ---------------- #
-author: Zhuang Ma
+author: Benson Cho
 organization: 
 organization_url: 
-github_username: mzlogin
-location: Wuhan, China
-email: chumpma@gmail.com
+github_username: bensoncho
+location: Taipei, Taiwan
+email: solar.24cc@gmail.com
 
 # ---------------- #
 #    Navigation    #
@@ -51,11 +51,11 @@ email: chumpma@gmail.com
 navs:
   -
     href: /
-    label: 首页
+    label: 首頁
 
   -
     href: /categories/
-    label: 分类
+    label: 分類
 
 #   -
 #     href: /archives/
@@ -67,15 +67,15 @@ navs:
 
   -
     href: /wiki/
-    label: 维基
+    label: WIKI
 
   -
     href: /links/
-    label: 链接
+    label: 連結
 
   -
     href: /about/
-    label: 关于
+    label: 關於
 
 # ---------------- #
 #       RSS        #
