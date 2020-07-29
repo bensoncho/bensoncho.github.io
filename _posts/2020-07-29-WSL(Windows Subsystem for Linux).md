@@ -38,6 +38,23 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 - [Pengwin Enterprise](https://www.microsoft.com/store/apps/9N8LP0X93VCP)
 - [Alpine WSL](https://www.microsoft.com/store/apps/9p804crf0395)
 
+# 啟用 Linux Distro
+安裝好後，即可在市集中啟用剛剛安裝的 Linux Distro  
+第一次啟用時，會提示輸入使用者帳號及密碼
+輸入後便完成啟用
+
+# 查看 WSL 列表及版本
+```bash
+wsl -l -v
+```
+
+# 設定預設要使用的 Linux Distro
+wslconfig /setdefault Name
+範例: 
+```bash
+wslconfig /setdefault Ubuntu-18.04
+```
+
 # 如何在 WSL 中安裝套件?
 
 在 linux 下安裝方式相同，使用該系統安裝指令就可以了
