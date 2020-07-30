@@ -2,8 +2,8 @@
 layout: post
 title: WSL(Windows Subsystem for Linux) 安裝與使用
 categories: Windows
-description: Windows Subsystem for Linux 安裝與使用
-keywords: WSL, Subsystem, Linux
+description: Windows Subsystem for Linux 安裝與使用  
+keywords: Windows, SubSystem, Linux
 ---
 
 # WSL (Windows Subsystem for Linux) 安裝與使用
