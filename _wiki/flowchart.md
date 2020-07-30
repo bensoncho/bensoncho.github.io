@@ -1,13 +1,13 @@
 ---
 layout: wiki
-title: Flow Chart
+title: Flow Chart Sample
 categories: flowchart
-description: flowchart
+description: 使用 Markdown 繪製 Flow Chart
 keywords: flowchart
 flow: true
 
 ---
-### flowchart
+### FlowChart
 
 ```flow
 st=>start: Start
