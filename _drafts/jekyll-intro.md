@@ -10,12 +10,12 @@ keywords: Jekyll, Github, Page
 
 Jekyll 以 Ruby 開發，是能夠將 Markdown, Liquid, HTML & CSS 轉換為靜態網頁的網頁生成器
 
-## 使用 Jekyll 的好處
+## 使用 Jekyll + GitHub Page 的好處
 * 無需資料庫
 * 可使用 Template，且有許多免費的資源
 * 支援 Github Page
 * 使用 Markdown 撰寫及維護容易  
-
+* 部署容易 ，git push 就完成部署
 
 
 

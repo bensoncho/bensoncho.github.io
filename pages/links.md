@@ -28,6 +28,16 @@ permalink: /links/
 {% endfor %}
 </ul>
 
+> 設計類.
+
+<ul>
+{% for link in site.data.links %}
+  {% if link.src == 'design' %}
+  <li><a href="{{ link.url }}" target="_blank">{{ link.name}}</a></li>
+  {% endif %}
+{% endfor %}
+</ul>
+
 
 > 其它
 
