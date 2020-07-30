@@ -8,21 +8,32 @@ menu: 链接
 permalink: /links/
 ---
 
-> God made relatives. Thank God we can choose our friends.
+> 好用工具網站.
 
 <ul>
 {% for link in site.data.links %}
-  {% if link.src == 'life' %}
+  {% if link.src == 'tools' %}
   <li><a href="{{ link.url }}" target="_blank">{{ link.name}}</a></li>
   {% endif %}
 {% endfor %}
 </ul>
 
-> 友情链接
+> Coding 類.
 
 <ul>
 {% for link in site.data.links %}
-  {% if link.src == 'www' %}
+  {% if link.src == 'coding' %}
+  <li><a href="{{ link.url }}" target="_blank">{{ link.name}}</a></li>
+  {% endif %}
+{% endfor %}
+</ul>
+
+
+> 其它
+
+<ul>
+{% for link in site.data.links %}
+  {% if link.src == 'others' %}
   <li><a href="{{ link.url }}" target="_blank">{{ link.name}}</a></li>
   {% endif %}
 {% endfor %}

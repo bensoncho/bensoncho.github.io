@@ -2,7 +2,7 @@
 layout: wiki
 title: Markdown
 categories: Markdown
-description: Markdown 常用语法示例。
+description: Markdown 常用文法示例。
 keywords: Markdown
 mermaid: true
 sequence: true
@@ -11,91 +11,91 @@ mathjax: true
 mindmap: true
 ---
 
-**目录**
+**目錄**
 
 * TOC
 {:toc}
 
-### 超链接
+### 超連結
 
 ```
-[靠谱-ing](https://mazhuang.org)
+[靠譜-ing](https://mazhuang.org)
 
 <https://mazhuang.org>
 ```
 
-[靠谱-ing](https://mazhuang.org)  
+[靠譜-ing](https://mazhuang.org)  
 
 <https://mazhuang.org>
 
 ### 列表
 
 ```
-1. 有序列表项 1
+1. 有序列表項 1
 
-2. 有序列表项 2
+2. 有序列表項 2
 
-3. 有序列表项 3
+3. 有序列表項 3
 ```
 
-1. 有序列表项 1
+1. 有序列表項 1
 
-2. 有序列表项 2
+2. 有序列表項 2
 
-3. 有序列表项 3
-
-```
-* 无序列表项 1
-
-* 无序列表项 2
-
-* 无序列表项 3
-```
-
-* 无序列表项 1
-
-* 无序列表项 2
-
-* 无序列表项 3
+3. 有序列表項 3
 
 ```
-- [x] 任务列表 1
-- [ ] 任务列表 2
+* 無序列表項 1
+
+* 無序列表項 2
+
+* 無序列表項 3
 ```
 
-- [x] 任务列表 1
-- [ ] 任务列表 2
+* 無序列表項 1
 
-### 强调
+* 無序列表項 2
+
+* 無序列表項 3
 
 ```
-~~删除线~~
+- [x] 任務列表 1
+- [ ] 任務列表 2
+```
+
+- [x] 任務列表 1
+- [ ] 任務列表 2
+
+### 強調
+
+```
+~~刪除線~~
 
 **加黑**
 
-*斜体*
+*斜體*
 ```
 
-~~删除线~~
+~~刪除線~~
 
 **加黑**
 
-*斜体*
+*斜體*
 
-### 标题
+### 標題
 
 ```
-# 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
-##### 五级标题
-###### 六级标题
+# 一級標題
+## 二級標題
+### 三級標題
+#### 四級標題
+##### 五級標題
+###### 六級標題
 ```
 
-Tips: `#` 与标题中间要加空格。
+Tips: `#` 與標題中間要加空格。
 
-### 表格
+### 錶格
 
 ```
 | HEADER1 | HEADER2 | HEADER3 | HEADER4 |
@@ -107,11 +107,11 @@ Tips: `#` 与标题中间要加空格。
 | ------- | :------ | :-----: | ------: |
 | content | content | content | content |
 
-1. :----- 表示左对齐
-2. :----: 表示中对齐
-3. -----: 表示右对齐
+1. :----- 錶示左對齊
+2. :----: 錶示中對齊
+3. -----: 錶示右對齊
 
-### 代码块
+### 代碼塊
 
 ```python
 print 'Hello, World!'
@@ -125,7 +125,7 @@ print 'Hello, World!'
    print 'hello'
    ```
 
-### 图片
+### 圖片
 
 ```
 ![本站favicon](/favicon.ico)
@@ -133,21 +133,21 @@ print 'Hello, World!'
 
 ![本站favicon](/favicon.ico)
 
-### 锚点
+### 錨點
 
 ```
-* [目录](#目录)
+* [目錄](#目錄)
 ```
 
-* [目录](#目录)
+* [目錄](#目錄)
 
 ### Inline Attribute
 
-Span Inline Attribute 详情参考 <https://kramdown.gettalong.org/syntax.html#span-ials>
+Span Inline Attribute 詳情參考 <https://kramdown.gettalong.org/syntax.html#span-ials>
 
-Block Inline Attribute 详情参考 <https://kramdown.gettalong.org/syntax.html#block-ials>
+Block Inline Attribute 詳情參考 <https://kramdown.gettalong.org/syntax.html#block-ials>
 
-给块/元素添加 class、id、内嵌样式等：
+給塊/元素添加 class、id、內嵌樣式等：
 
 ```
 ![本站favicon](/favicon.ico){:.center}
@@ -163,7 +163,7 @@ Hello, *world*{:#world}
 
 Hello, *world*{: style="color:red"} 
 
-结合自定义的样式，有些场景比较有用。
+結合自定義的樣式，有些場景比較有用。
 
 ### Emoji
 
@@ -223,7 +223,7 @@ $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 ### topic2.2
 ## topic3
 <!--Note-->
-这是一个备注
+這是一個備註
 <!--/Note-->
 ### topic3.1
 ### topic3.2
