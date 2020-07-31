@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 使用 JavaScript 將 JSON 格式化
-categories: [JavaScript]
-description: 使用 JavaScript 將 JSON 格式化 (美化)
-keywords: JavaScript, JSON
+categories: [Javascript]
+description: 使用 Javascript 將 JSON 格式化 (美化)
+keywords: Javascript, JSON
 ---
 
 在介接 API 過程，常常以 JSON 做為資料交換的格式
