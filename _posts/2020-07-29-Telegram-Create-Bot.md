@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bot Platform - 建立一個Bot
+title: 使用 Telegram Bot Platform - 建立一個 Bot
 categories: Telegram
 description: 使用 Telegram Bot Platform 建立一個機器人
 keywords: Telegram, Bot, Chat
