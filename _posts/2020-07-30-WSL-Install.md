@@ -6,6 +6,9 @@ description: Windows Subsystem for Linux 安裝與使用
 keywords: Windows, SubSystem, Linux
 ---
 
+WSL 是適用於 Linux 的 Windows 子系統，可讓開發人員執行 GNU/Linux 環境 (包括大部分的命令列工具、公用程式和應用程式)，  
+直接在 Windows 上執行，不需進行修改，不會造成傳統虛擬機器或 dualboot 設定的額外負荷。  
+
 # WSL (Windows Subsystem for Linux) 安裝與使用
 
 以系統管理員身分執行  Windows PowerShell

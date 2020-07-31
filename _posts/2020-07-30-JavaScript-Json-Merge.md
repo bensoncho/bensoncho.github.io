@@ -6,7 +6,8 @@ description: 使用 Javascript 合併 Json Object
 keywords: Javascript, json
 ---
 
-## 以下為使用 JavaScript 合併 2個 Json Object 的範例
+## 使用 JavaScript 將 2 份不同的 Json object 以識別欄位的值進行合併
+
 
 ### 先來看看第一個 JSON 的內容
 ```json
@@ -84,7 +85,7 @@ document.write(JSON.stringify(joinObjects(json1, json2)));
 
 # CodePen Sample
 
-<p class="codepen" data-height="680" data-theme-id="light" data-default-tab="js,result" data-user="BensonCho" data-slug-hash="yLYdZeO" style="height: 680px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Json Merge Sample">
+<p class="codepen" data-height="663" data-theme-id="dark" data-default-tab="js,result" data-user="BensonCho" data-slug-hash="yLYdZeO" style="height: 663px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Json Merge Sample">
   <span>See the Pen <a href="https://codepen.io/BensonCho/pen/yLYdZeO">
   Json Merge Sample</a> by Benson (<a href="https://codepen.io/BensonCho">@BensonCho</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
