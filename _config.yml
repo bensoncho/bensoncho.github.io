@@ -5,9 +5,9 @@ baseurl:
 url: https://bensoncho.github.io
 date_format: "ordinal"
 title: Benson's Blog
-subtitle: "好Code啊~ 好Code~"
+subtitle: "Status: 200 OK"
 description: "Benson 的個人部落格"
-keywords: Benson, 工程屍, 程式心得, 小抄
+keywords: Benson, 工程屍, 程式心得, 小抄, 迷途小碼農, 高級打字員, 程序猿
 timezone: Asia/Taipei
 encoding: "utf-8"
 side_bar_repo_limit: 5

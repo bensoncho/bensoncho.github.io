@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: 關於我
 description: Keep Coding
 keywords: Benson, Keep, Coding
 comments: true
@@ -8,7 +8,8 @@ menu: 關於
 permalink: /about/
 ---
 
-草根碼農，又稱高級打字員
+Hi 我是 Benson  
+塵世間一個迷途的小碼農，又稱高級打字員  
 
 ## Contact
 
