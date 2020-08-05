@@ -4,9 +4,9 @@
 baseurl:
 url: https://bensoncho.github.io
 date_format: "ordinal"
-title: Benson's Blog
+title: 班森
 subtitle: "Status: 200 OK"
-description: "班森 程式/攝影/旅遊/重機"
+description: "班森的碎唸 程式/攝影/旅遊/重機"
 keywords: Benson, 工程屍, 程式心得, 小抄, 迷途小碼農, 高級打字員, 程序猿, 旅遊, 技術, 攝影, 重機
 timezone: Asia/Taipei
 encoding: "utf-8"
