@@ -82,6 +82,8 @@
     {% endif %}
 </head>
 <body class="{{ page.class }}" data-mz="{{ page.class }}">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v8.0&appId=945584702216004&autoLogAppEvents=1" nonce="JqbMsjLW"></script>    
     <header class="site-header">
         <div class="container">
             <h1><a href="{{ site.url }}/" title="{{ site.title }}"><span class="octicon octicon-mark-github"></span> {{ site.title }}</a></h1>
