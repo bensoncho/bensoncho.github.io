@@ -45,7 +45,11 @@ layout: default
 <section class="container content">
 <div class="columns">
   <div class="column three-fourths" >
-    <div class="fb-like" data-href="{{ site.url }}{{ post.url }}" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>                
+    <div class="fb-like" data-href="{{ site.url }}{{ page.url }}" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>                    
+    <div class="meta-info">
+        <span class="octicon octicon-comment"></span>
+        <span class="disqus-comment-count" data-disqus-identifier="{{ page.url }}"></span>
+    </div>    
     </br></br>
     {% include content-header-ad.html %}
     <article class="article-content markdown-body">
