@@ -6,8 +6,8 @@ description: 九份老街
 keywords: Photography, 九份, JiuFen, GR2, Ricoh, Snap
 ---
 
-
-## 九份老街  
+![pic](/images/photo/20200810_JiuFen/R0010233.jpg)
+## 九份老街
 位於臺灣新北市瑞芳區的一條老街，主要範圍以基山街、豎崎路及輕便路等街道為主  
 是北台灣的熱門景點之一 ，吸引許多日本 / 大陸 / 韓國 / 香港 等地遊客造訪  
 對台北人來說更是一個熟悉的地方  

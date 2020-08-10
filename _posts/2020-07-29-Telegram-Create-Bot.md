@@ -8,7 +8,6 @@ keywords: Telegram, Bot, Chat
 
 自從 Line 2020/3/1 收費新制上路後，群發大戶們紛紛出走
 此時 Telegram 突然就變的很紅，因此我們也來研究一下 Telegram 的 Bot platform
-
 ![Telegram Bot Father](/images/posts/Telegram/Telegram_Bot.png)
 
 有關 Telegram API 資訊可參考官方的說明: <a href="https://core.telegram.org/" target="_blank">https://core.telegram.org/</a>
