@@ -117,7 +117,7 @@ comments_provider: disqus
 # !!!Important!!! Please modify infos below to yours
 # https://disqus.com
 disqus:
-    username: benson_cho
+    username: bensons-blog
 # https://imsun.net/posts/gitment-introduction/
 gitment:
     owner: mzlogin
