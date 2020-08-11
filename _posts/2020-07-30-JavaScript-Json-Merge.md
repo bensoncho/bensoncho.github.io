@@ -6,7 +6,7 @@ description: 使用 Javascript 合併 Json Object
 keywords: Javascript, json
 ---
 
-## 使用 JavaScript 將 2 份不同的 Json object 以識別欄位的值進行合併
+使用 JavaScript 將 2 份不同的 Json object 以識別欄位的值進行合併
 
 
 ### 先來看看第一個 JSON 的內容
