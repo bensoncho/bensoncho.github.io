@@ -82,6 +82,7 @@ Polly 為 .Net Foundation 中的 Open Source 類別庫, 可以協助我們處理
 ```
 
 結果如下:
+
 ![pic2](/images/posts/CSharp/polly_result.png)
 
 
