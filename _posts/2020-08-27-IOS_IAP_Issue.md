@@ -66,7 +66,7 @@ Polly 為 .Net Foundation 中的 Open Source 類別庫, 可以協助我們處理
             StatusCode = (int)response.StatusCode;
         }
         string exMessage = exception.Message;
-        string errMsg = $"Http StatusCode: {StatusCode.ToString()} {StatusCodeString}, Begin ReTry: {retryCount}, ex: {err},{exMessage}";
+        string errMsg = $"Http StatusCode: {StatusCode.ToString()} {StatusCodeString}, Enter ReTry: {retryCount}";
         Response.Write($"{errMsg} <BR> ");
         Response.Flush();
     });    
