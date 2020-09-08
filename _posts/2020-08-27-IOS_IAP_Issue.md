@@ -57,10 +57,16 @@ Polly 為 .Net Foundation 中的 Open Source 類別庫, 可以協助我們處理
     .Handle<WebException>()
     .WaitAndRetry(retryTimes, (exception, ts, retryCount, context) =>
     {
+        var response = ((WebException)exception).Response as HttpWebResponse;
+        string StatusCodeString = string.Empty;
+        int StatusCode = 0;
+        if (response != null)
+        {
+            StatusCodeString = response.StatusCode.ToString();
+            StatusCode = (int)response.StatusCode;
+        }
         string exMessage = exception.Message;
-        string StatusCodeString = ((System.Net.HttpWebResponse)((WebException)exception).Response).StatusCode.ToString();
-        int StatusCode = (int)((System.Net.HttpWebResponse)((WebException)exception).Response).StatusCode;
-        string errMsg = $"DateTime: {DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fff")}, Http StatusCode: {StatusCode.ToString()} {StatusCodeString}, Enter ReTry: {retryCount}";
+        string errMsg = $"Http StatusCode: {StatusCode.ToString()} {StatusCodeString}, Begin ReTry: {retryCount}, ex: {err},{exMessage}";
         Response.Write($"{errMsg} <BR> ");
         Response.Flush();
     });    
