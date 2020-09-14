@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apple 驗證收據伺服器 (503) Server Unavailable !
+title: Apple 驗證收據伺服器 (503) Service Unavailable !
 categories: [C#]
 description: IOS In-App purchase receipt validation issue
 keywords: IOS, IAB, IAP, Billing, Receipt, Validate, Validation, issue, 503, server, Unavailable, C#, Polly
@@ -8,7 +8,7 @@ flow: true
 ---
 
 當伺服器收到 Client 回傳的 In-App Billing 收據，準備送到 Apple 驗講伺服器驗收據時
-居然收到 HTTP Status Code 503 (Server Unavailable) 的回應 ??
+居然收到 HTTP Status Code 503 (Service Unavailable) 的回應 ??
 
 ## 收據驗證流程
 在實做 IOS In-App Purchase 的時候
@@ -30,7 +30,7 @@ cond(no)->sub1(right)->e
 ```
 
 聽起來一切都很單純美好，罷特!!!
-長時間以來，當去詢間 Apple 的驗證伺服器的時候，時不時就會遇到 HTTP Status Code 503 (Server Unavailable) 的回應，導致於當下無法判斷該購買是否有效，而無法立即提供使用者對應的服務!
+長時間以來，當去詢間 Apple 的驗證伺服器的時候，時不時就會遇到 HTTP Status Code 503 (Service Unavailable) 的回應，導致於當下無法判斷該購買是否有效，而無法立即提供使用者對應的服務!
 
 ## 解決方案
 根據以往的經驗，發現獲得 HTTP Status Code 503 的狀況並不會長時間的持續，通常是短暫的服務中止，也就是瞬斷，因此想法是在發出 HttpWebRequest 的時候加入重試的機制
