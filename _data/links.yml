@@ -1,0 +1,27 @@
+- name: CyberChef
+  url: https://gchq.github.io/CyberChef/
+  src: tools
+
+- name: Json Parser Online
+  url: https://jsonparseronline.com/
+  src: tools
+
+- name: C# Online Compiler | .NET Fiddle
+  url: https://dotnetfiddle.net/
+  src: coding
+
+- name: Codepen
+  url: https://codepen.io/
+  src: coding
+
+- name: Unsplash photos for everyone
+  url: https://unsplash.com/
+  src: design
+
+- name: pexels
+  url: https://www.pexels.com/zh-tw
+  src: design
+
+- name: StockSnap
+  url: https://stocksnap.io/
+  src: design
