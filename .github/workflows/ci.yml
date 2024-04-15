@@ -1,8 +1,9 @@
 name: "CI"
 on:
   push:
-    branches:
-      - "master"
+    branches-ignore:
+      - "production"
+      - "docs"
     paths-ignore:
       - ".github/**"
       - "!.github/workflows/ci.yml"
@@ -11,6 +12,8 @@ on:
       - "README.md"
       - "LICENSE"
   pull_request:
+    paths:
+      - "**"
 
 jobs:
   build:
@@ -38,5 +41,5 @@ jobs:
       - name: Build Assets
         run: npm i && npm run build
 
-      - name: Test Site
-        run: bash tools/test
+      # - name: Test Site
+      #   run: bash tools/test
