@@ -5,6 +5,9 @@ categories: [LangChain]
 tags: [Tech.]
 description: LangChain 的介紹
 keywords: LangChain, AI, GAI, ChatGPT, ChatBots, Agents, Workflow
+image:
+  path: /images/posts/postsbanner/langChain.jpg
+  alt: 示意圖
 ---
  
 # LangChain介紹報告
