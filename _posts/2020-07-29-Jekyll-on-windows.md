@@ -2,9 +2,9 @@
 layout: post
 title: 在 Windows 上安裝 Jekyll
 categories: [Windows, Jekyll]
-tags: [Tech.]
-description: LangChain 的介紹
-keywords: LangChain, AI, GAI, ChatGPT, ChatBots, Agents, Workflow
+tags: [MurMur]
+description: 在 Windows 上安裝 Jekyll ( 必需啟用 Windows Subsystem for Linux )
+keywords: Jekyll, Github, pages, gitpage, 網站產生器, 部落格
 ---
  
 使用 Windows Subsystem for Linux 在 Windows 系統上安裝 jekyll
