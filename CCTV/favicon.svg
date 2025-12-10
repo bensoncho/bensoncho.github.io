@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Camera Body -->
+  <rect x="12" y="16" width="40" height="26" rx="4" fill="#333333" />
+  
+  <!-- Lens Housing -->
+  <circle cx="32" cy="29" r="10" fill="#222222" stroke="#555555" stroke-width="2"/>
+  
+  <!-- Lens Reflection/Glass -->
+  <circle cx="32" cy="29" r="6" fill="#00aaff" />
+  <circle cx="34" cy="27" r="2" fill="white" opacity="0.6" />
+  
+  <!-- Recording LED -->
+  <circle cx="48" cy="20" r="2" fill="#ff0000">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Mounting Bracket -->
+  <path d="M12 42 L24 56 L40 56 L52 42" fill="#333333" opacity="0.8"/>
+  <rect x="28" y="56" width="8" height="6" fill="#222222"/>
+
+</svg>

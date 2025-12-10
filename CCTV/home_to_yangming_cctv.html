@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陽明山交通監控攝影機畫面</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb; /* Modern Blue */
+            --primary-dark: #1d4ed8;
+            --secondary-color: #f59e0b; /* Amber for accents */
+            --background-color: #f8fafc; /* Slate 50 */
+            --card-background: #ffffff;
+            --text-primary: #1e293b; /* Slate 800 */
+            --text-secondary: #64748b; /* Slate 500 */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --radius: 16px;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark), var(--secondary-color));
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Decorative circle in header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg) translate(0, 0); }
+            50% { transform: rotate(180deg) translate(20px, 20px); }
+            100% { transform: rotate(360deg) translate(0, 0); }
+        }
+        
+        h1 {
+            margin: 0;
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 2em;
+            padding: 15px 0;
+            background-color: transparent;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .camera-container h1 {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            font-size: 1.5em;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-bottom: none;
+        }
+        .button-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }    
+        .button {
+            background-color: var(--card-background);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1em;
+        }
+
+        .button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }          
+        .camera-container {
+            background-color: var(--card-background);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .camera-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .camera-container:nth-child(1) { animation-delay: 0.1s; }
+        .camera-container:nth-child(2) { animation-delay: 0.2s; }
+        .camera-container:nth-child(3) { animation-delay: 0.3s; }
+        .camera-container:nth-child(4) { animation-delay: 0.4s; }
+        .camera-container:nth-child(5) { animation-delay: 0.5s; }
+        .camera-container:nth-child(6) { animation-delay: 0.6s; }
+        .camera-container:nth-child(7) { animation-delay: 0.7s; }
+        .camera-container:nth-child(8) { animation-delay: 0.8s; }
+        .camera-container:nth-child(9) { animation-delay: 0.9s; }
+        .camera-container:nth-child(10) { animation-delay: 1.0s; }
+        .camera-container:nth-child(11) { animation-delay: 1.1s; }
+        .camera-container:nth-child(12) { animation-delay: 1.2s; }
+        .camera-container:nth-child(13) { animation-delay: 1.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        img, iframe, video {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        
+        .camera-container img + img,
+        .camera-container iframe + iframe,
+        .camera-container video + video {
+            margin-top: 20px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 20px 10px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .camera-container {
+                margin: 20px 10px;
+            }
+            
+            img, iframe, video {
+                height: 300px;
+            }
+        }
+
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--card-background);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .home-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        @media screen and (max-width: 768px) {
+            .home-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            .button-container {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>    
+    <script>
+        function reloadImage(imgElement) {            
+            const originalSrc = imgElement.src;
+            const newSrc = originalSrc + (originalSrc.includes('?') ? '&t=' : '?t=') + new Date().getTime();
+            imgElement.src = newSrc;
+        }
+    </script>
+</head>
+<body>
+    <div class="button-container">
+        <a href="cctv.html" class="button">回首頁</a>
+        <button onclick="location.reload(true)" class="button">重新整理</button>
+    </div>
+    <header>
+        <h1>陽明山交通監控畫面</h1>
+    </header>
+    <div class="container">
+        <div class="camera-container">
+            <h1>集賢路-三信路口</h1>
+            <video id="cam1" controls autoplay muted playsinline
+                style="display:block; width:100%; height:500px; border-radius:8px; box-shadow:0 2px 10px var(--shadow-color); object-fit:cover;">
+                您的瀏覽器不支援 HTML5 影片。
+            </video>
+            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+            <script>
+            (function(){
+                const src = "https://cctvatis3.ntpc.gov.tw/hls/C000166/live.m3u8";
+                const video = document.getElementById('cam1');
+
+                if (window.Hls && Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(video);
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = src;
+                } else {
+                    video.insertAdjacentHTML('afterend', '<p>此裝置或瀏覽器不支援 HLS 直播。</p>');
+                }
+            })();
+            </script>               
+        </div>
+
+        <div class="camera-container">
+            <h1>中正重陽橋</h1>
+            <iframe src="https://hls.bote.gov.taipei/live/index.html?id=048" 
+                    frameborder="0" 
+                    allowfullscreen="" 
+                    referrerpolicy="no-referrer" 
+                    onload="this.style.display='block';" 
+                    style="display: block; width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px var(--shadow-color);">
+            </iframe>
+            <video id="cam2" controls autoplay muted playsinline
+                style="display:block; width:100%; height:500px; border-radius:8px; box-shadow:0 2px 10px var(--shadow-color); object-fit:cover;">
+                您的瀏覽器不支援 HTML5 影片。
+            </video>
+            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+            <script>
+            (function(){
+                const src = "https://jtmctrafficcctv2.gov.taipei/NVR/f874984c-a7ad-47fa-8208-1a3010b57cab/live.m3u8";
+                const video = document.getElementById('cam2');
+
+                if (window.Hls && Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(video);
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = src;
+                } else {
+                    video.insertAdjacentHTML('afterend', '<p>此裝置或瀏覽器不支援 HLS 直播。</p>');
+                }
+            })();
+            </script>                
+        </div>
+
+        <div class="camera-container">
+            <h1>中正路 中山北路口</h1>
+            <iframe src="https://hls.bote.gov.taipei/live/index.html?id=411" 
+                    frameborder="0" 
+                    allowfullscreen="" 
+                    referrerpolicy="no-referrer" 
+                    onload="this.style.display='block';" 
+                    style="display: block; width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px var(--shadow-color);">
+            </iframe>
+        </div>
+
+        <div class="camera-container">
+            <h1>福林路</h1>
+            <iframe src="https://hls.bote.gov.taipei/live/index.html?id=235" 
+                    frameborder="0" 
+                    allowfullscreen="" 
+                    referrerpolicy="no-referrer" 
+                    onload="this.style.display='block';" 
+                    style="display: block; width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px var(--shadow-color);">
+            </iframe>
+            <video id="cam3" controls autoplay muted playsinline
+                style="display:block; width:100%; height:500px; border-radius:8px; box-shadow:0 2px 10px var(--shadow-color); object-fit:cover;">
+                您的瀏覽器不支援 HTML5 影片。
+            </video>
+            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+            <script>
+            (function(){
+                const src = "https://jtmctrafficcctv4.gov.taipei/NVR/3ffc2acd-fc42-4fef-ad49-38b7d4f8444a/live.m3u8";
+                const video = document.getElementById('cam3');
+
+                if (window.Hls && Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(video);
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = src;
+                } else {
+                    video.insertAdjacentHTML('afterend', '<p>此裝置或瀏覽器不支援 HLS 直播。</p>');
+                }
+            })();
+            </script>               
+        </div>
+
+        <div class="camera-container">
+            <h1>仰德大道一段</h1>            
+            <video id="cam4" controls autoplay muted playsinline
+                style="display:block; width:100%; height:500px; border-radius:8px; box-shadow:0 2px 10px var(--shadow-color); object-fit:cover;">
+                您的瀏覽器不支援 HTML5 影片。
+            </video>
+            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+            <script>
+            (function(){
+                const src = "https://jtmctrafficcctv5.gov.taipei/NVR/a47c59fa-6db7-4aad-a9e3-4ee038eff0b2/live.m3u8";
+                const video = document.getElementById('cam4');
+
+                if (window.Hls && Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(video);
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = src;
+                } else {
+                    video.insertAdjacentHTML('afterend', '<p>此裝置或瀏覽器不支援 HLS 直播。</p>');
+                }
+            })();
+            </script>               
+        </div>
+
+        <div class="camera-container">
+            <h1>格致路</h1>            
+            <video id="cam5" controls autoplay muted playsinline
+                style="display:block; width:100%; height:500px; border-radius:8px; box-shadow:0 2px 10px var(--shadow-color); object-fit:cover;">
+                您的瀏覽器不支援 HTML5 影片。
+            </video>
+            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+            <script>
+            (function(){
+                const src = "https://jtmctrafficcctv2.gov.taipei/NVR/cd2e43d5-ec89-4bd8-ab36-20e3d4bdcc88/live.m3u8";
+                const video = document.getElementById('cam5');
+
+                if (window.Hls && Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(video);
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = src;
+                } else {
+                    video.insertAdjacentHTML('afterend', '<p>此裝置或瀏覽器不支援 HLS 直播。</p>');
+                }
+            })();
+            </script>  
+        </div>
+
+        <div class="camera-container">
+            <h1>陽金公路</h1>            
+            <video id="cam6" controls autoplay muted playsinline
+                style="display:block; width:100%; height:500px; border-radius:8px; box-shadow:0 2px 10px var(--shadow-color); object-fit:cover;">
+                您的瀏覽器不支援 HTML5 影片。
+            </video>
+            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+            <script>
+            (function(){
+                const src = "https://jtmctrafficcctv3.gov.taipei/NVR/f32a45a2-c89f-4990-9b8c-e19c1eea4ff1/live.m3u8";
+                const video = document.getElementById('cam6');
+
+                if (window.Hls && Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(video);
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = src;
+                } else {
+                    video.insertAdjacentHTML('afterend', '<p>此裝置或瀏覽器不支援 HLS 直播。</p>');
+                }
+            })();
+            </script>              
+        </div>
+
+        <div class="camera-container">
+            <h1>陽明書屋</h1>
+            <iframe loading="lazy" src="https://www.youtube.com/embed/RttyIGHbN_w?autoplay=1&amp;mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="display: block; width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px var(--shadow-color);" allowfullscreen=""></iframe>
+        </div>
+
+        <div class="camera-container">
+            <h1>竹子湖派出所前</h1>
+            <iframe id="myframe" src="https://hls.bote.gov.taipei/live/index.html?id=281" frameborder="0" allowfullscreen="" referrerpolicy="no-referrer" style="display: block; width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px var(--shadow-color);"></iframe>
+        </div>
+
+        <div class="camera-container">
+            <h1>二子坪</h1>
+            <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/d9KuXrPCWYU?mute=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1&amp;autoplay=1&amp;widget_referrer=https%3A%2F%2Ftw.live" title="二子坪停車場 即時影像" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoplay" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-autoplay" onload="this.style.display='block'; if (this.parentElement.previousElementSibling) this.parentElement.previousElementSibling.style.display='none';" style="display: block; width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px var(--shadow-color);"></iframe>
+        </div>
+
+        <div class="camera-container">
+            <h1>大屯山</h1>
+            <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/6ghffcNt3Nw?mute=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1&amp;autoplay=1&amp;widget_referrer=https%3A%2F%2Ftw.live" title="大屯自然公園 即時影像" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; autoplay" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-autoplay" onload="this.style.display='block'; if (this.parentElement.previousElementSibling) this.parentElement.previousElementSibling.style.display='none';" style="display: block; width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px var(--shadow-color);"></iframe>
+        </div>
+
+        <div class="camera-container">
+            <h1>冷水坑</h1>
+            <iframe loading="lazy" src="https://www.youtube.com/embed/GB64WeZZQPQ?autoplay=1&amp;mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="display: block; width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px var(--shadow-color);" allowfullscreen=""></iframe>
+        </div>
+
+        <div class="camera-container">
+            <h1>擎天崗</h1>
+            <iframe loading="lazy" src="https://www.youtube.com/embed/yF2LAyOvq0Q?autoplay=1&amp;mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="display: block; width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px var(--shadow-color);" allowfullscreen=""></iframe>
+        </div>
+    </div>
+</body>
+</html>

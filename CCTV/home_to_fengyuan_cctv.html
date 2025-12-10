@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>豐原交通監控畫面</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb; /* Modern Blue */
+            --primary-dark: #1d4ed8;
+            --secondary-color: #f59e0b; /* Amber for accents */
+            --background-color: #f8fafc; /* Slate 50 */
+            --card-background: #ffffff;
+            --text-primary: #1e293b; /* Slate 800 */
+            --text-secondary: #64748b; /* Slate 500 */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --radius: 16px;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark), var(--secondary-color));
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Decorative circle in header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg) translate(0, 0); }
+            50% { transform: rotate(180deg) translate(20px, 20px); }
+            100% { transform: rotate(360deg) translate(0, 0); }
+        }
+        
+        h1 {
+            margin: 0;
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 2em;
+            padding: 15px 0;
+            background-color: transparent;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .camera-container h1 {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            font-size: 1.5em;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-bottom: none;
+        }
+        .button-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }    
+        .button {
+            background-color: var(--card-background);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1em;
+        }
+
+        .button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }          
+        .camera-container {
+            background-color: var(--card-background);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .camera-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .camera-container:nth-child(1) { animation-delay: 0.1s; }
+        .camera-container:nth-child(2) { animation-delay: 0.2s; }
+        .camera-container:nth-child(3) { animation-delay: 0.3s; }
+        .camera-container:nth-child(4) { animation-delay: 0.4s; }
+        .camera-container:nth-child(5) { animation-delay: 0.5s; }
+        .camera-container:nth-child(6) { animation-delay: 0.6s; }
+        .camera-container:nth-child(7) { animation-delay: 0.7s; }
+        .camera-container:nth-child(8) { animation-delay: 0.8s; }
+        .camera-container:nth-child(9) { animation-delay: 0.9s; }
+        .camera-container:nth-child(10) { animation-delay: 1.0s; }
+        .camera-container:nth-child(11) { animation-delay: 1.1s; }
+        .camera-container:nth-child(12) { animation-delay: 1.2s; }
+        .camera-container:nth-child(13) { animation-delay: 1.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        img, iframe, video {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        
+        .camera-container img + img,
+        .camera-container iframe + iframe,
+        .camera-container video + video {
+            margin-top: 20px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 20px 10px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .camera-container {
+                margin: 20px 10px;
+            }
+            
+            img, iframe, video {
+                height: 300px;
+            }
+        }
+
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--card-background);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .home-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        @media screen and (max-width: 768px) {
+            .home-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            .button-container {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>    
+    <script>
+        function reloadImage(imgElement) {            
+            const originalSrc = imgElement.src;
+            const newSrc = originalSrc + (originalSrc.includes('?') ? '&t=' : '?t=') + new Date().getTime();
+            imgElement.src = newSrc;
+        }
+    </script>
+</head>
+<body>
+    <div class="button-container">
+        <a href="cctv.html" class="button">回首頁</a>
+        <button onclick="location.reload(true)" class="button">重新整理</button>
+    </div>
+    <header>
+        <h1>豐原區交通監控畫面</h1>
+    </header>   
+    <div class="container">
+        <div class="camera-container">
+            <h1>國道1號汐止五股高架道路 25K+673處</h1>
+            <img src="https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=12560&t=1730428874803" alt="國道1號汐止五股高架道路 南向（下塔悠交流道 - 環北交流道）" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道1號林口-桃園段 41K+850處</h1>
+            <img src="https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=14180&t=1730428942400" alt="國道1號 南向（林口交流道 - 桃園交流道）" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道1號五股楊梅高架道路 48K+595處</h1>
+            <img src="https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=14850&t=1730428987810" alt="國道1號五股楊梅高架道路 南向（泰山轉接道交流道 - 機場系統交流道）" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道1號中壢段 69K+505處</h1>
+            <img src="https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=16951&t=1730429050214" alt="國道1號五股楊梅高架道路 南向（中壢轉接二交流道 - 校前路交流道）69K+505處" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道1號 南向（高架楊梅端 - 湖口交流道）72K+500處</h1>
+            <img src="https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=17260&t=1730429279801" alt="國道1號 南向（高架楊梅端 - 湖口交流道）72K+500處" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道1號 南向（湖口交流道 - 湖口服務區）85K+460處</h1>
+            <img src="https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=18540&t=1730430699802" alt="國道1號 南向（湖口交流道 - 湖口服務區）85K+460處" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道1號 南向（新竹交流道 - 新竹系統交流道）98K+890處</h1>
+            <img src="https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=19880&t=1730430810885" alt="國道1號 南向（新竹交流道 - 新竹系統交流道）98K+890處" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道1號 南向（頭份交流道 - 頭屋交流道）121K+355處</h1>
+            <img src="https://cctvc.freeway.gov.tw/abs2mjpg/bmjpg?camera=355&t=1730430870798" alt="國道1號 南向（頭份交流道 - 頭屋交流道）121K+355處" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道1號 南向（三義交流道 - 泰安服務區）156K+025處</h1>
+            <img src="https://cctvc.freeway.gov.tw/abs2mjpg/bmjpg?camera=199&t=1730430923790" alt="國道1號 南向（三義交流道 - 泰安服務區）156K+025處" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道1號 北向（台中系統交流道 - 后里交流道）165K+350處</h1>
+            <img src="https://cctvc.freeway.gov.tw/abs2mjpg/bmjpg?camera=466&t=1730430985348" alt="國道1號 北向（台中系統交流道 - 后里交流道）165K+350處" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>國道4號 西向（后豐交流道 - 台中系統交流道）12K+850處</h1>
+            <img src="https://cctvc.freeway.gov.tw/abs2mjpg/bmjpg?camera=441&t=1730431169175" alt="國道4號 西向（后豐交流道 - 台中系統交流道）12K+850處" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>豐原區豐勢路國豐路(國4)</h1>
+            <img src="https://cctv-ss03.thb.gov.tw/T3-166K+190?t=1730428628801" alt="豐原區豐勢路國豐路(國4)" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>豐原區豐勢路二段396號</h1>
+            <img src="https://cctv-ss03.thb.gov.tw/T3-166K+900?t=1730428570262" alt="台中市豐原區豐勢路二段396號(7-11豐泰門市旁)" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+
+        <div class="camera-container">
+            <h1>中正路/博愛街(右側車流往廟東夜市)</h1>
+            <img src="https://tcnvr3.taichung.gov.tw/325dd94f" alt="中正路/博愛街(右側車流往廟東夜市)" onclick="reloadImage(this)" onerror="this.src='https://tw.live/assets/maintenance.jpg';" referrerpolicy="no-referrer">
+        </div>
+    </div>
+</body>
+</html>
