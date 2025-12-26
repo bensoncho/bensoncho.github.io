@@ -202,7 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const val = r[timeColIndex];
             // Format date if it's a Date object
             if (val instanceof Date) {
-                return val.toISOString().split('T')[0]; // Simple YYYY-MM-DD
+                // Use local time instead of UTC to avoid timezone shifts
+                const year = val.getFullYear();
+                const month = String(val.getMonth() + 1).padStart(2, '0');
+                const day = String(val.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
             }
             return val;
         });
@@ -256,63 +260,112 @@ document.addEventListener('DOMContentLoaded', () => {
         const tooltipText = isDark ? '#f8fafc' : '#1e293b';
 
         // Transform series data based on type
-        const series = seriesDataRaw.map(s => {
-            const item = {
-                name: s.name,
-                data: s.data,
-                smooth: true,
-                symbol: 'circle',
-                symbolSize: 8,
-                itemStyle: { borderWidth: 2 },
-                lineStyle: { width: 3 }
-            };
+        if (type === 'pie') {
+             // For Pie chart, we only use the first series and map it to {name, value}
+             const firstSeries = seriesDataRaw[0];
+             const pieData = firstSeries.data.map((val, idx) => ({
+                 name: xAxisData[idx],
+                 value: val
+             }));
 
-            if (type === 'line') {
-                item.type = 'line';
-            } else if (type === 'bar') {
-                item.type = 'bar';
-                item.itemStyle = { borderRadius: [4, 4, 0, 0] };
-            } else if (type === 'area') {
-                item.type = 'line';
-                item.areaStyle = { opacity: 0.3 };
-            } else if (type === 'scatter') {
-                item.type = 'scatter';
-            } else if (type === 'stacked') {
-                item.type = 'bar';
-                item.stack = 'total';
-                item.emphasis = { focus: 'series' };
-            }
+             series = [{
+                 name: firstSeries.name,
+                 type: 'pie',
+                 radius: ['40%', '70%'],
+                 avoidLabelOverlap: true,
+                 itemStyle: {
+                     borderRadius: 10,
+                     borderColor: isDark ? '#1e293b' : '#fff',
+                     borderWidth: 2
+                 },
+                 label: {
+                     show: true,
+                     position: 'outside',
+                     formatter: '{b}: {d}%',
+                     color: isDark ? '#e2e8f0' : '#1e293b'
+                 },
+                 emphasis: {
+                     label: {
+                         show: true,
+                         fontSize: 20,
+                         fontWeight: 'bold'
+                     }
+                 },
+                 labelLine: {
+                     show: true,
+                     lineStyle: {
+                        color: isDark ? '#475569' : '#cbd5e1'
+                     }
+                 },
+                 data: pieData
+             }];
+        } else {
+             // Transform series data based on type (existing logic)
+            series = seriesDataRaw.map(s => {
+                const item = {
+                    name: s.name,
+                    data: s.data,
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 8,
+                    itemStyle: { borderWidth: 2 },
+                    lineStyle: { width: 3 }
+                };
 
-            return item;
-        });
+                if (type === 'line') {
+                    item.type = 'line';
+                } else if (type === 'bar') {
+                    item.type = 'bar';
+                    item.itemStyle = { borderRadius: [4, 4, 0, 0] };
+                } else if (type === 'area') {
+                    item.type = 'line';
+                    item.areaStyle = { opacity: 0.3 };
+                } else if (type === 'scatter') {
+                    item.type = 'scatter';
+                } else if (type === 'stacked') {
+                    item.type = 'bar';
+                    item.stack = 'total';
+                    item.emphasis = { focus: 'series' };
+                    item.label = {
+                    show: true,
+                    formatter: (params) => params.value === 0 ? '' : params.value
+                };
+                }
+
+                return item;
+            });
+        }
 
         const option = {
             backgroundColor: 'transparent',
             tooltip: {
-                trigger: 'axis',
+                trigger: type === 'pie' ? 'item' : 'axis',
                 backgroundColor: tooltipBg,
                 borderColor: tooltipBorder,
                 textStyle: {
                     color: tooltipText
-                }
+                },
+                // Add percentage for pie
+                formatter: type === 'pie' ? '{b}: {c} ({d}%)' : undefined
             },
             legend: {
-                data: series.map(s => s.name),
+                data: type === 'pie' ? series[0].data.map(d => d.name) : series.map(s => s.name),
                 textStyle: {
                     color: textColor
                 },
-                top: 0 // Moved to top to avoid overlap with dataZoom
+                top: 0
             },
-            grid: {
+            // Hide grid/axes for Pie
+            grid: type === 'pie' ? undefined : {
                 left: '3%',
                 right: '4%',
-                bottom: '15%', // Increased bottom space for dataZoom
-                top: '10%', // Added top space for legend
+                bottom: '15%',
+                top: '10%',
                 containLabel: true
             },
-            xAxis: {
+            xAxis: type === 'pie' ? undefined : {
                 type: 'category',
-                boundaryGap: type === 'bar' || type === 'stacked', // Bar charts need gap
+                boundaryGap: type === 'bar' || type === 'stacked',
                 data: xAxisData,
                 axisLine: {
                     lineStyle: {
@@ -323,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     color: textColor
                 }
             },
-            yAxis: {
+            yAxis: type === 'pie' ? undefined : {
                 type: 'value',
                 splitLine: {
                     lineStyle: {
@@ -335,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     color: textColor
                 }
             },
-            dataZoom: [
+            dataZoom: type === 'pie' ? undefined : [
                 {
                     type: 'inside',
                     start: 0,
