@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <defs>
+        <linearGradient id="bullishGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#ff4d4d;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ff9f43;stop-opacity:1" />
+        </linearGradient>
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    
+    <!-- Background Circle (Optional, kept transparent for logo feel) -->
+    
+    <!-- Rising Chart Line -->
+    <path d="M10 80 L35 55 L50 70 L90 20" 
+          stroke="url(#bullishGradient)" 
+          stroke-width="8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          filter="url(#glow)" />
+          
+    <!-- Arrow Head -->
+    <path d="M70 20 L90 20 L90 40" 
+          stroke="url(#bullishGradient)" 
+          stroke-width="8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          filter="url(#glow)" />
+          
+    <!-- Bars underneath to suggest volume/strength -->
+    <rect x="15" y="80" width="10" height="10" rx="2" fill="#ff4d4d" opacity="0.3" />
+    <rect x="35" y="65" width="10" height="25" rx="2" fill="#ff6b6b" opacity="0.4" />
+    <rect x="55" y="75" width="10" height="15" rx="2" fill="#ff8787" opacity="0.5" />
+    <rect x="75" y="40" width="10" height="50" rx="2" fill="#ff9f43" opacity="0.6" />
+
+</svg>
